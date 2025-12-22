@@ -1,9 +1,6 @@
 function predict() {
     const nama = document.getElementById("nama").value.trim();
-    if (nama === "") {
-        alert("Masukkan nama pasien!");
-        return;
-    }
+
 
     const getInt = (id) => parseInt(document.getElementById(id).value, 10);
     const getFloat = (id) => parseFloat(document.getElementById(id).value);
