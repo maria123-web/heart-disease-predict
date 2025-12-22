@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Penyakit Jantung</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>💓 Prediksi Penyakit Jantung</h2>
+    <p>Masukkan data pasien untuk memprediksi risiko penyakit jantung.</p>
+
+    <label>Nama Pasien</label>
+    <input type="text" id="nama" placeholder="Masukkan nama pasien">
+
+    <label>Umur</label>
+    <input type="number" id="age" min="1" max="120" value="30">
+
+    <label>Jenis Kelamin</label>
+    <select id="sex">
+        <option value="1">Laki-laki</option>
+        <option value="0">Perempuan</option>
+    </select>
+
+    <!-- BENAR sesuai dataset (0–3) -->
+    <label>Tipe Nyeri Dada (cp)</label>
+    <select id="cp">
+        <option value="0">Typical angina</option>
+        <option value="1">Atypical angina</option>
+        <option value="2">Non-anginal pain</option>
+        <option value="3">Asymptomatic</option>
+    </select>
+
+    <label>Tekanan Darah Istirahat (trestbps)</label>
+    <input type="number" id="trestbps" min="50" max="250" value="120">
+
+    <label>Kolesterol (chol)</label>
+    <input type="number" id="chol" min="100" max="600" value="200">
+
+    <label>FBS (>120 mg/dl)</label>
+    <select id="fbs">
+        <option value="0">Tidak</option>
+        <option value="1">Ya</option>
+    </select>
+
+    <!-- FIX: Normal = 0 (BUKAN 1) -->
+    <label>Hasil EKG (restecg)</label>
+    <select id="restecg">
+        <option value="0">Normal</option>
+        <option value="1">ST-T abnormality</option>
+        <option value="2">Ventricular hypertrophy</option>
+    </select>
+
+    <label>Denyut Jantung Maksimum</label>
+    <input type="number" id="thalach" min="50" max="250" value="160">
+
+    <label>Nyeri Dada Saat Olahraga</label>
+    <select id="exang">
+        <option value="0">Tidak</option>
+        <option value="1">Ya</option>
+    </select>
+
+    <label>Oldpeak</label>
+    <input type="number" id="oldpeak" step="0.1" min="0" max="10" value="0.0">
+
+    <!-- FIX: Upsloping = 2, Flat = 1, Downsloping = 0 (sesuai dataset) -->
+    <label>Slope</label>
+    <select id="slope">
+        <option value="2">Upsloping (normal)</option>
+        <option value="1">Flat</option>
+        <option value="0">Downsloping</option>
+    </select>
+
+    <label>CA (jumlah pembuluh darah berpenyakit)</label>
+    <select id="ca">
+        <option value="0">0 (normal)</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+
+    <!-- FIX: Normal harus = 2 (dataset thal) -->
+    <label>Thal</label>
+    <select id="thal">
+        <option value="2">Normal</option>
+        <option value="1">Fixed defect</option>
+        <option value="3">Reversible defect</option>
+        <option value="0">Unknown</option>
+    </select>
+
+    <button onclick="predict()">Prediksi</button>
+
+    <p id="result"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
