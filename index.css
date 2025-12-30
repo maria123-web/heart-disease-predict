@@ -1,0 +1,159 @@
+/* =========================
+   Strong Responsive / Full-Width Fix
+   Replace entire index.css with this
+   ========================= */
+
+/* RESET */
+* { box-sizing: border-box; }
+
+html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow-x: hidden; }
+
+body {
+  font-family: Arial, sans-serif; /* keep your font */
+  background-color: rgba(249, 235, 217, 1);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* PAGE: allow full-bleed on mobile but keep max on desktop */
+.page {
+  width: 100%;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 0; /* remove side padding that created gutters */
+}
+
+/* HERO / HEADER */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 14px 0 8px;
+  overflow: visible;
+}
+
+/* Make wave full width edge-to-edge but keep aspect */
+.hero-wave {
+  display: block;
+  width: 100vw;             /* full viewport width */
+  max-width: 100%;
+  height: auto;
+  margin-left: calc(-50vw + 50%); /* center the full-bleed image */
+  pointer-events: none;
+}
+
+/* content centered inside */
+.hero-content {
+  margin: 0 auto;
+  padding: 8px 12px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Title & subtitle */
+.hero h1 {
+  font-family: "Climate Crisis", Arial, sans-serif;
+  font-size: clamp(18px, 6.5vw, 36px);
+  color: rgba(255, 107, 88, 1);
+  margin: 0;
+  line-height: 1.05;
+  text-align: center;
+}
+.hero p {
+  font-size: 14px;
+  margin: 0;
+  text-align: center;
+  color: #222;
+}
+
+/* hero image */
+.hero-image {
+  width: 44%;
+  max-width: 300px;
+  height: auto;
+  margin-top: 6px;
+}
+
+/* FORM */
+.form-wrapper { display: flex; justify-content: center; padding: 12px 0 40px; }
+
+.patient-form {
+  width: 100%;
+  max-width: 900px;
+  background: #FFB6B3;
+  padding: 20px;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+
+/* fields */
+.form-group { display:flex; flex-direction:column; }
+.form-group label { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.form-group input, .form-group select {
+  padding: 10px; border-radius: 8px; border: 1px solid #ddd; font-size: 14px;
+}
+
+/* button */
+.btn-primary {
+  grid-column: span 2;
+  padding: 12px;
+  background-color: rgba(255, 107, 88, 1);
+  color: #fff; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;
+}
+.result-text { grid-column: span 2; text-align:center; margin-top:8px; font-weight:700; }
+
+/* Teleport badge safety */
+.desktop2-container2 { right: 20px; bottom: 20px; position: fixed; z-index: 99; }
+
+/* =========================
+   MOBILE: Force full-bleed layout and 1-col form
+   ========================= */
+@media (max-width: 900px) {
+
+  /* let .page be full width (no centered padding) */
+  .page { max-width: 100%; padding: 0; }
+
+  /* hero spacing smaller */
+  .hero { padding-top: 8px; padding-bottom: 6px; }
+  .hero-content { padding: 6px 10px 16px; gap: 6px; }
+
+  .hero h1 { font-size: clamp(16px, 7.5vw, 32px); }
+  .hero p { font-size: 13px; padding: 0 8px; }
+
+  /* hero-wave stays full viewport width and centered */
+  .hero-wave { width: 100vw; margin-left: calc(-50vw + 50%); }
+
+  .hero-image { width: 56%; max-width: 260px; }
+
+  /* form one column, full width with small side margins */
+  .patient-form {
+    grid-template-columns: 1fr;
+    width: calc(100% - 24px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 16px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  .btn-primary, .result-text { grid-column: span 1; }
+
+  .form-group input, .form-group select { padding: 12px; font-size: 15px; }
+
+  /* hide possible decorative overflow items from export */
+  .desktop1-thq-bigstar1-elm,
+  .desktop1-thq-bigstar2-elm,
+  .desktop1-thq-bigstar3-elm,
+  .desktop1-thq-boom11-elm,
+  .desktop1-thq-waveborder1-elm { display: none; }
+}
+
+/* very small screens */
+@media (max-width: 420px) {
+  .hero h1 { font-size: clamp(14px, 9.5vw, 28px); }
+  .hero-image { width: 72%; max-width: 320px; }
+  .patient-form { padding: 12px; width: calc(100% - 20px); }
+}

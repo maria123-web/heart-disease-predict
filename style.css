@@ -1,42 +1,147 @@
+/* =========================
+   Responsive styles — keep fonts & colors
+   ========================= */
+
+/* Reset / base */
+* { box-sizing: border-box; }
+html,body { width:100%; height:100%; margin:0; padding:0; overflow-x:hidden; }
 body {
-    background: #f5f5f5;
-    font-family: Arial, sans-serif;
+  font-family: "Poppins", "Inter", system-ui, -apple-system, Arial, sans-serif;
+  background: rgba(249, 235, 217, 1);
+  color: #222;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+
+  /* safe-area for iOS notches */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-top: env(safe-area-inset-top);
 }
 
-.container {
-    width: 400px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    margin-top: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ccc;
+/* Page container: centered on large screens but full-width on small */
+.page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
 }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+/* HERO */
+.hero {
+  position: relative;
+  text-align: center;
+  overflow: visible;
+  padding-bottom: 8px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background: crimson;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* wave: full-bleed but centered */
+.hero-wave {
+  display: block;
+  width: 100vw;
+  height: auto;
+  margin-left: calc(-50vw + 50%);
+  pointer-events: none;
 }
 
-button:hover {
-    background: darkred;
+/* hero inner content */
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px 24px;
 }
 
-#result {
-    margin-top: 15px;
-    font-weight: bold;
-    text-align: center;
+/* Title uses Climate Crisis font (kept) */
+.hero-title {
+  font-family: "Climate Crisis", "Poppins", sans-serif;
+  color: rgba(255, 107, 88, 1); /* keep color */
+  font-size: clamp(20px, 6.5vw, 56px);
+  margin: 0;
+  line-height: 1.02;
+  text-align: center;
+}
+
+/* Subtitle */
+.hero-sub {
+  font-family: "Poppins", "Inter", Arial, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  text-align: center;
+  max-width: 760px;
+  color: #222;
+}
+
+/* CTA */
+.cta { text-decoration: none; }
+.cta-btn {
+  padding: 10px 18px;
+  background: rgba(255, 107, 88, 1);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+/* Hero illustration (big heart) */
+.hero-illustration {
+  width: 36%;
+  max-width: 340px;
+  height: auto;
+  margin-top: 8px;
+}
+
+/* Decorative images (desktop only) */
+.decor { position: absolute; pointer-events: none; }
+.star-1 { top: 24px; left: 8px; width: 120px; }
+.star-2 { top: 220px; right: 40px; width: 140px; }
+.star-3 { bottom: 40px; left: 40px; width: 120px; }
+
+/* Teleport badge (kept) */
+.teleport-badge {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  background: rgba(41,41,41,0.42);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+  font-size: 13px;
+  z-index: 99;
+}
+
+/* =========================
+   RESPONSIVE: adapt across devices
+   ========================= */
+
+/* Tablet and below — make layout safe & full-width feel */
+@media (max-width: 900px) {
+
+  .page { max-width: 100%; padding: 0; }
+
+  .hero-inner { padding: 8px 12px 18px; gap: 8px; }
+
+  .hero-title { font-size: clamp(18px, 7.5vw, 42px); }
+  .hero-sub { font-size: 13px; padding: 0 8px; }
+
+  .hero-illustration { width: 56%; max-width: 260px; }
+
+  /* hide decorative images that may overlap on smaller screens */
+  .decor { display: none; }
+}
+
+/* Phone (small) */
+@media (max-width: 420px) {
+  .hero-title { font-size: clamp(16px, 9.5vw, 32px); }
+  .hero-illustration { width: 72%; max-width: 300px; }
+  .teleport-badge { right: 10px; bottom: 10px; transform: scale(0.95); }
+}
+
+/* Accessibility focus outlines */
+button:focus, a:focus {
+  outline: 3px solid rgba(255,107,88,0.18);
+  outline-offset: 3px;
 }

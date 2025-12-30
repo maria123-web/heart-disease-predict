@@ -1,101 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prediksi Penyakit Jantung</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heart Disease Prediction</title>
+  <link rel="icon" type="image/png" href="image/favicon-32x32.png">
+
+  <!-- keep the fonts you used (Climate Crisis, Poppins, Inter) -->
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- only one stylesheet link -->
+  <link rel="stylesheet" href="style.css" />
+
 </head>
+
 <body>
+  <main class="page">
 
-<div class="container">
-    <h2>💓 Prediksi Penyakit Jantung</h2>
-    <p>Masukkan data pasien untuk memprediksi risiko penyakit jantung.</p>
+    <header class="hero">
+      <!-- full-width decorative wave (kept) -->
+      <img src="image/wave-border 1.png" alt="wave" class="hero-wave" />
 
-    <label>Nama Pasien</label>
-    <input type="text" id="nama" placeholder="Masukkan nama pasien">
+      <div class="hero-inner">
+        <h1 class="hero-title">HEART PREDICT SCANNER</h1>
 
-    <label>Umur</label>
-    <input type="number" id="age" min="1" max="120" value="30">
+        <p class="hero-sub">
+          Prediksi penyakit jantung dengan instan
+        </p>
 
-    <label>Jenis Kelamin</label>
-    <select id="sex">
-        <option value="1">Laki-laki</option>
-        <option value="0">Perempuan</option>
-    </select>
+        <a href="predict.html" class="cta">
+          <button class="cta-btn">Start Predict</button>
+        </a>
 
-    <!-- BENAR sesuai dataset (0–3) -->
-    <label>Tipe Nyeri Dada (cp)</label>
-    <select id="cp">
-        <option value="0">Typical angina</option>
-        <option value="1">Atypical angina</option>
-        <option value="2">Non-anginal pain</option>
-        <option value="3">Asymptomatic</option>
-    </select>
+        <img src="image/big-heart 1.png" alt="big heart" class="hero-illustration" />
+      </div>
+    </header>
 
-    <label>Tekanan Darah Istirahat (trestbps)</label>
-    <input type="number" id="trestbps" min="50" max="250" value="120">
+    <!-- optional decorative stars (kept for desktop) -->
+    <!-- <img src="image/big-star 1.png" alt="" class="decor star-1" aria-hidden="true" />
+    <img src="image/big-star 2.png" alt="" class="decor star-2" aria-hidden="true" />
+    <img src="image/big-star 3.png" alt="" class="decor star-3" aria-hidden="true" /> -->
 
-    <label>Kolesterol (chol)</label>
-    <input type="number" id="chol" min="100" max="600" value="200">
+    <!-- teleport badge (optional, kept) -->
+    <div class="teleport-badge" aria-hidden="true">
+      Built in TeleportHQ
+    </div>
 
-    <label>FBS (>120 mg/dl)</label>
-    <select id="fbs">
-        <option value="0">Tidak</option>
-        <option value="1">Ya</option>
-    </select>
-
-    <!-- FIX: Normal = 0 (BUKAN 1) -->
-    <label>Hasil EKG (restecg)</label>
-    <select id="restecg">
-        <option value="0">Normal</option>
-        <option value="1">ST-T abnormality</option>
-        <option value="2">Ventricular hypertrophy</option>
-    </select>
-
-    <label>Denyut Jantung Maksimum</label>
-    <input type="number" id="thalach" min="50" max="250" value="160">
-
-    <label>Nyeri Dada Saat Olahraga</label>
-    <select id="exang">
-        <option value="0">Tidak</option>
-        <option value="1">Ya</option>
-    </select>
-
-    <label>Oldpeak</label>
-    <input type="number" id="oldpeak" step="0.1" min="0" max="10" value="0.0">
-
-    <!-- FIX: Upsloping = 2, Flat = 1, Downsloping = 0 (sesuai dataset) -->
-    <label>Slope</label>
-    <select id="slope">
-        <option value="2">Upsloping (normal)</option>
-        <option value="1">Flat</option>
-        <option value="0">Downsloping</option>
-    </select>
-
-    <label>CA (jumlah pembuluh darah berpenyakit)</label>
-    <select id="ca">
-        <option value="0">0 (normal)</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-
-    <!-- FIX: Normal harus = 2 (dataset thal) -->
-    <label>Thal</label>
-    <select id="thal">
-        <option value="2">Normal</option>
-        <option value="1">Fixed defect</option>
-        <option value="3">Reversible defect</option>
-        <option value="0">Unknown</option>
-    </select>
-
-    <button onclick="predict()">Prediksi</button>
-
-    <p id="result"></p>
-</div>
-
-<script src="script.js"></script>
+  </main>
 </body>
 </html>
